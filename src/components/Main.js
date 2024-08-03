@@ -60,17 +60,25 @@ const Main = () => {
         }}
       />
 
-      <TextField
-        id="outlined-basic"
-        label="Number of books"
-        variant="outlined"
-        fullWidth
-        sx={{ marginBottom: 4 }}
-        value={books}
-        onChange={(e) => {
-          setBooks(e.target.value);
-        }}
-      />
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Number of Books</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={books}
+          label="How did you know about us?"
+          onChange={(e) => {
+            setBooks(e.target.value);
+          }}
+          sx={{ marginBottom: 4 }}
+        >
+          <MenuItem value="Google">1</MenuItem>
+          <MenuItem value="Instagram">2</MenuItem>
+          <MenuItem value="Facebook">3</MenuItem>
+          <MenuItem value="Other">4</MenuItem>
+          <MenuItem value="Other">5</MenuItem>
+        </Select>
+      </FormControl>
 
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">
@@ -82,6 +90,7 @@ const Main = () => {
           value={source}
           label="How did you know about us?"
           onChange={handleChange}
+          sx={{ marginBottom: 4 }}
         >
           <MenuItem value="Google">Google</MenuItem>
           <MenuItem value="Instagram">Instagram</MenuItem>
@@ -89,6 +98,30 @@ const Main = () => {
           <MenuItem value="Other">Other</MenuItem>
         </Select>
       </FormControl>
+
+      <TextField
+        id="outlined-basic"
+        label="School/College/University"
+        variant="outlined"
+        fullWidth
+        sx={{ marginBottom: 4 }}
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+
+      <TextField
+        id="outlined-basic"
+        label="Academic year"
+        variant="outlined"
+        fullWidth
+        sx={{ marginBottom: 4 }}
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
 
       <Button
         variant="contained"

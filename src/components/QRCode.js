@@ -14,6 +14,8 @@ const QRCodePage = () => {
         justifyContent: "center"
       }}
     >
+      <h3>Your opinion matters to us</h3>
+
       <QRCode size={270} value={value} />
 
       <Button
