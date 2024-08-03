@@ -8,7 +8,11 @@
 }
 
 .qrcode {
-  max-width: 800px; /* Set the maximum width you desire */
-  text-align: center;
+  /* Set the maximum width you desire */
+
   margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
 }

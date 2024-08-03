@@ -14,7 +14,7 @@ const QRCodePage = () => {
         justifyContent: "center"
       }}
     >
-      <QRCode size={275} value={value} />
+      <QRCode size={270} value={value} />
 
       <Button
         variant="contained"
