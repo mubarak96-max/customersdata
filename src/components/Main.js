@@ -83,10 +83,10 @@ const Main = () => {
           label="How did you know about us?"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Google</MenuItem>
-          <MenuItem value={20}>Instagram</MenuItem>
-          <MenuItem value={30}>Facebook</MenuItem>
-          <MenuItem value={30}>Other</MenuItem>
+          <MenuItem value="Google">Google</MenuItem>
+          <MenuItem value="Instagram">Instagram</MenuItem>
+          <MenuItem value="Facebook">Facebook</MenuItem>
+          <MenuItem value="Other">Other</MenuItem>
         </Select>
       </FormControl>
 
