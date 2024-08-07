@@ -67,12 +67,12 @@ const Main = () => {
         };
 
         setLoading(true);
+        setError("");
+        setShowError(false);
 
         await addDoc(collection(db, "customers"), data);
 
         setLoading(false);
-        setError("");
-        setShowError(false);
 
         navigate("/qrcode");
 
@@ -99,7 +99,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         size="small"
-        sx={{ marginBottom: 4 }}
+        sx={{ marginBottom: 3 }}
         value={name}
         onChange={(e) => {
           setName(e.target.value);
@@ -112,7 +112,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         size="small"
-        sx={{ marginBottom: 4 }}
+        sx={{ marginBottom: 3 }}
         value={phone}
         onChange={(e) => {
           setPhone(e.target.value);
@@ -125,7 +125,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         size="small"
-        sx={{ marginBottom: 4 }}
+        sx={{ marginBottom: 3 }}
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
@@ -145,7 +145,7 @@ const Main = () => {
           onChange={(e) => {
             setBooks(e.target.value);
           }}
-          sx={{ marginBottom: 4 }}
+          sx={{ marginBottom: 3 }}
         >
           <MenuItem value="1">1</MenuItem>
           <MenuItem value="2">2</MenuItem>
@@ -167,7 +167,7 @@ const Main = () => {
           size="small"
           onChange={handleChange}
           sx={{
-            marginBottom: 4,
+            marginBottom: 3,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
@@ -186,7 +186,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         size="small"
-        sx={{ marginBottom: 4 }}
+        sx={{ marginBottom: 3 }}
         value={school}
         onChange={(e) => {
           setSchool(e.target.value);
@@ -199,7 +199,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         size="small"
-        sx={{ marginBottom: 4 }}
+        sx={{ marginBottom: 2 }}
         value={academicYear}
         onChange={(e) => {
           setAcademicYear(e.target.value);
@@ -207,14 +207,14 @@ const Main = () => {
       />
 
       {showError && (
-        <Alert sx={{ marginBottom: 4 }} severity="error">
+        <Alert sx={{ marginBottom: 2 }} severity="error">
           {error}
         </Alert>
       )}
 
       <Button
         variant="contained"
-        sx={{ marginTop: -2 }}
+        sx={{ marginTop: -1 }}
         onClick={() => handleSubmit()}
       >
         Next{" "}
