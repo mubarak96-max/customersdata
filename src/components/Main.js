@@ -51,7 +51,7 @@ const Main = () => {
     } else if (academicYear === "") {
       setError("Tell us your academic year");
       setShowError(true);
-    } else if (school) {
+    } else if (school === "") {
       setError("Tell us your school");
       setShowError(true);
     } else {
