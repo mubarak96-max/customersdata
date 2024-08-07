@@ -16,3 +16,19 @@
   justify-content: center;
   margin-top: 40px;
 }
+
+.logo {
+  width: 50px;
+  display: block;
+}
+
+.main span {
+  display: block;
+  color: "black";
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text {
+  margin-bottom: 10px;
+}
