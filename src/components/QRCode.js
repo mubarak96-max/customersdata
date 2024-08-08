@@ -15,6 +15,7 @@ const QRCodePage = () => {
       }}
     >
       <h3>Your opinion matters to us</h3>
+      {/* <span>Scan below and give us a review</span> */}
 
       <QRCode size={270} value={value} />
 

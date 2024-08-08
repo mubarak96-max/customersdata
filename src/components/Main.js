@@ -98,7 +98,7 @@ const Main = () => {
         label="Names"
         variant="outlined"
         fullWidth
-        size="small"
+        // size="small"
         sx={{ marginBottom: 3 }}
         value={name}
         onChange={(e) => {
@@ -111,7 +111,7 @@ const Main = () => {
         label="Phone Number"
         variant="outlined"
         fullWidth
-        size="small"
+        // size="small"
         sx={{ marginBottom: 3 }}
         value={phone}
         onChange={(e) => {
@@ -124,7 +124,7 @@ const Main = () => {
         label="Email"
         variant="outlined"
         fullWidth
-        size="small"
+        // size="small"
         sx={{ marginBottom: 3 }}
         value={email}
         onChange={(e) => {
@@ -140,7 +140,7 @@ const Main = () => {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={books}
-          size="small"
+          // size="small"
           label="How did you know about us?"
           onChange={(e) => {
             setBooks(e.target.value);
@@ -164,7 +164,7 @@ const Main = () => {
           id="demo-simple-select"
           value={source}
           label="How did you know about us?"
-          size="small"
+          // size="small"
           onChange={handleChange}
           sx={{
             marginBottom: 3,
@@ -185,7 +185,7 @@ const Main = () => {
         label="School/College/University"
         variant="outlined"
         fullWidth
-        size="small"
+        // size="small"
         sx={{ marginBottom: 3 }}
         value={school}
         onChange={(e) => {
@@ -198,7 +198,7 @@ const Main = () => {
         label="Academic year"
         variant="outlined"
         fullWidth
-        size="small"
+        // size="small"
         sx={{ marginBottom: 2 }}
         value={academicYear}
         onChange={(e) => {
