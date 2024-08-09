@@ -25,6 +25,7 @@ const Main = () => {
   const [saleType, setSaleType] = React.useState("");
   const [error, setError] = React.useState("");
   const [showError, setShowError] = React.useState(false);
+  const [showSuccess, setShowShowSuccess] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
   const handleChange = (event) => {
@@ -70,9 +71,21 @@ const Main = () => {
 
         setLoading(false);
 
-        navigate("/qrcode");
+        if (saleType === "Free Books") {
+          navigate("/qrcode");
+        } else {
+          setShowShowSuccess(true);
 
-        setTimeout(() => {}, 300);
+          setTimeout(() => {
+            setSaleType("");
+            setShowError(false);
+            setShowShowSuccess(false);
+            setName("");
+            setPhone("");
+            setEmail("");
+            setSource("");
+          }, 3000);
+        }
       } catch (error) {
         console.log("Error", `Failed to upload due to ${error}`);
 
@@ -235,10 +248,17 @@ const Main = () => {
         </Alert>
       )}
 
+      {showSuccess && (
+        <Alert sx={{ marginBottom: 2 }} severity="success">
+          Success
+        </Alert>
+      )}
+
       <Button
         variant="contained"
         sx={{ marginTop: -1 }}
         onClick={() => handleSubmit()}
+        disabled={loading}
       >
         Next{" "}
         {loading && (
