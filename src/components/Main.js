@@ -22,6 +22,7 @@ const Main = () => {
   const [source, setSource] = React.useState("");
   const [school, setSchool] = React.useState("");
   const [academicYear, setAcademicYear] = React.useState("");
+  const [saleType, setSaleType] = React.useState("");
   const [error, setError] = React.useState("");
   const [showError, setShowError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -45,6 +46,9 @@ const Main = () => {
     } else if (source === "") {
       setError("Please how did you know about us?");
       setShowError(true);
+    } else if (saleType === "") {
+      setError("Select the sale type!");
+      setShowError(true);
     } else {
       try {
         const data = {
@@ -54,7 +58,8 @@ const Main = () => {
           books,
           source,
           academicYear,
-          school
+          school,
+          saleType
         };
 
         setLoading(true);
@@ -90,7 +95,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         // size="small"
-        sx={{ marginBottom: 3 }}
+        sx={{ marginBottom: 2.5 }}
         value={name}
         onChange={(e) => {
           setName(e.target.value);
@@ -103,7 +108,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         // size="small"
-        sx={{ marginBottom: 3 }}
+        sx={{ marginBottom: 2.5 }}
         value={phone}
         onChange={(e) => {
           setPhone(e.target.value);
@@ -116,7 +121,7 @@ const Main = () => {
         variant="outlined"
         fullWidth
         // size="small"
-        sx={{ marginBottom: 3 }}
+        sx={{ marginBottom: 2.5 }}
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
@@ -125,25 +130,47 @@ const Main = () => {
 
       <FormControl fullWidth>
         <InputLabel sx={{}} id="demo-simple-select-label">
-          Number of Books
+          Sale type
         </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={books}
+          value={saleType}
           // size="small"
-          label="How did you know about us?"
+          label="Sale Type"
           onChange={(e) => {
-            setBooks(e.target.value);
+            setSaleType(e.target.value);
           }}
-          sx={{ marginBottom: 3 }}
+          sx={{ marginBottom: 2.5 }}
         >
-          <MenuItem value="1">1</MenuItem>
-          <MenuItem value="2">2</MenuItem>
-          <MenuItem value="3">3</MenuItem>
-          <MenuItem value="4">4</MenuItem>
+          <MenuItem value="Selling">Selling</MenuItem>
+          <MenuItem value="Free Books">Free Books</MenuItem>
         </Select>
       </FormControl>
+
+      {saleType === "Free Books" && (
+        <FormControl fullWidth>
+          <InputLabel sx={{}} id="demo-simple-select-label">
+            Number of Books
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={books}
+            // size="small"
+            label="How did you know about us?"
+            onChange={(e) => {
+              setBooks(e.target.value);
+            }}
+            sx={{ marginBottom: 2.5 }}
+          >
+            <MenuItem value="1">1</MenuItem>
+            <MenuItem value="2">2</MenuItem>
+            <MenuItem value="3">3</MenuItem>
+            <MenuItem value="4">4</MenuItem>
+          </Select>
+        </FormControl>
+      )}
 
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">
@@ -157,7 +184,7 @@ const Main = () => {
           // size="small"
           onChange={handleChange}
           sx={{
-            marginBottom: 3,
+            marginBottom: 2.5,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
@@ -172,31 +199,35 @@ const Main = () => {
         </Select>
       </FormControl>
 
-      <TextField
-        id="outlined-basic"
-        label="School/College/University"
-        variant="outlined"
-        fullWidth
-        // size="small"
-        sx={{ marginBottom: 3 }}
-        value={school}
-        onChange={(e) => {
-          setSchool(e.target.value);
-        }}
-      />
+      {saleType === "Free Books" && (
+        <TextField
+          id="outlined-basic"
+          label="School/College/University"
+          variant="outlined"
+          fullWidth
+          // size="small"
+          sx={{ marginBottom: 2.5 }}
+          value={school}
+          onChange={(e) => {
+            setSchool(e.target.value);
+          }}
+        />
+      )}
 
-      <TextField
-        id="outlined-basic"
-        label="Academic year"
-        variant="outlined"
-        fullWidth
-        // size="small"
-        sx={{ marginBottom: 2 }}
-        value={academicYear}
-        onChange={(e) => {
-          setAcademicYear(e.target.value);
-        }}
-      />
+      {saleType === "Free Books" && (
+        <TextField
+          id="outlined-basic"
+          label="Academic year"
+          variant="outlined"
+          fullWidth
+          // size="small"
+          sx={{ marginBottom: 2 }}
+          value={academicYear}
+          onChange={(e) => {
+            setAcademicYear(e.target.value);
+          }}
+        />
+      )}
 
       {showError && (
         <Alert sx={{ marginBottom: 2 }} severity="error">
