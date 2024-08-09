@@ -21,6 +21,7 @@ const Main = () => {
   const [books, setBooks] = React.useState("");
   const [source, setSource] = React.useState("");
   const [school, setSchool] = React.useState("");
+  const [saleAmount, setSaleAmount] = React.useState("");
   const [academicYear, setAcademicYear] = React.useState("");
   const [saleType, setSaleType] = React.useState("");
   const [error, setError] = React.useState("");
@@ -60,7 +61,8 @@ const Main = () => {
           source,
           academicYear,
           school,
-          saleType
+          saleType,
+          saleAmount
         };
 
         setLoading(true);
@@ -84,6 +86,7 @@ const Main = () => {
             setPhone("");
             setEmail("");
             setSource("");
+            setSaleAmount("");
           }, 3000);
         }
       } catch (error) {
@@ -160,6 +163,20 @@ const Main = () => {
           <MenuItem value="Free Books">Free Books</MenuItem>
         </Select>
       </FormControl>
+      {saleType === "Selling" && (
+        <TextField
+          id="outlined-basic"
+          label="Sale Amount"
+          variant="outlined"
+          fullWidth
+          // size="small"
+          sx={{ marginBottom: 2.5 }}
+          value={saleAmount}
+          onChange={(e) => {
+            setSaleAmount(e.target.value);
+          }}
+        />
+      )}
 
       {saleType === "Free Books" && (
         <FormControl fullWidth>
