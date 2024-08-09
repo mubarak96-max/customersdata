@@ -8,32 +8,32 @@ const AllCustomers = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getCustomers = async () => {
-    try {
-      setLoading(true);
-      let arr = [];
-
-      const promsRef = collection(db, "customers");
-
-      const q = query(promsRef, orderBy("createdAt", "desc"));
-
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        // console.log(doc.id, " => ", doc.data());
-        arr.push({ id: doc.id, data: doc.data() });
-      });
-      setCustomers(arr);
-      setLoading(false);
-
-      console.log("customers", customers);
-    } catch (error) {
-      console.log("error", error.message);
-    }
-  };
-
   useEffect(() => {
+    const getCustomers = async () => {
+      try {
+        setLoading(true);
+        let arr = [];
+
+        const promsRef = collection(db, "customers");
+
+        const q = query(promsRef, orderBy("createdAt", "desc"));
+
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          // console.log(doc.id, " => ", doc.data());
+          arr.push({ id: doc.id, data: doc.data() });
+        });
+        setCustomers(arr);
+        setLoading(false);
+
+        console.log("customers", customers);
+      } catch (error) {
+        console.log("error", error.message);
+      }
+    };
+
     getCustomers();
-  }, []);
+  }, [customers]);
 
   return (
     <div>
