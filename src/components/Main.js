@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./../assets/bookhero_logo.jpg";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Main = () => {
@@ -39,12 +39,6 @@ const Main = () => {
     if (name === "") {
       setError("Name is required");
       setShowError(true);
-    } else if (phone === "") {
-      setError("Phone number is required");
-      setShowError(true);
-    } else if (email === "") {
-      setError("Email is required");
-      setShowError(true);
     } else if (source === "") {
       setError("Please how did you know about us?");
       setShowError(true);
@@ -62,7 +56,8 @@ const Main = () => {
           academicYear,
           school,
           saleType,
-          saleAmount
+          saleAmount,
+          createdAt: serverTimestamp()
         };
 
         setLoading(true);

@@ -2,9 +2,10 @@
   max-width: 800px; /* Set the maximum width you desire */
   margin: 0 auto; /* Center the container */
   padding: 0 0; /* Add some padding if needed */
-  margin-top: 30px;
+  margin-top: 1px;
   padding-left: 7px;
   padding-right: 7px;
+  margin-bottom: 10px;
 }
 
 .qrcode {
