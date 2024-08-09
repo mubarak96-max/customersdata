@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SingleCustomer from "./SingleCustomer";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
@@ -33,7 +33,11 @@ const AllCustomers = () => {
     };
 
     getCustomers();
-  }, [customers]);
+  }, []);
+
+  //   const getCustomers = async () => {
+
+  //   };
 
   return (
     <div>
