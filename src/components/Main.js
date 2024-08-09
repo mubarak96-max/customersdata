@@ -42,17 +42,8 @@ const Main = () => {
     } else if (email === "") {
       setError("Email is required");
       setShowError(true);
-    } else if (books === "") {
-      setError("Please provide the number of books selected");
-      setShowError(true);
     } else if (source === "") {
       setError("Please how did you know about us?");
-      setShowError(true);
-    } else if (academicYear === "") {
-      setError("Tell us your academic year");
-      setShowError(true);
-    } else if (school === "") {
-      setError("Tell us your school");
       setShowError(true);
     } else {
       try {
@@ -151,7 +142,6 @@ const Main = () => {
           <MenuItem value="2">2</MenuItem>
           <MenuItem value="3">3</MenuItem>
           <MenuItem value="4">4</MenuItem>
-          <MenuItem value="5">5</MenuItem>
         </Select>
       </FormControl>
 
@@ -176,6 +166,8 @@ const Main = () => {
           <MenuItem value="Google">Google</MenuItem>
           <MenuItem value="Instagram">Instagram</MenuItem>
           <MenuItem value="Facebook">Facebook</MenuItem>
+          <MenuItem value="Walk In">Walk In</MenuItem>
+          <MenuItem value="Regular Customer">Regular Customer</MenuItem>
           <MenuItem value="Other">Other</MenuItem>
         </Select>
       </FormControl>
