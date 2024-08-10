@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import SingleCustomer from "./SingleCustomer";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../firebase";
-import { Box, CircularProgress, TextField } from "@mui/material";
+import { Box, CircularProgress, TextField, Typography } from "@mui/material";
 import { format, startOfDay, endOfDay } from "date-fns";
 
 const AllCustomers = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [totalSaleAmount, setTotalSaleAmount] = useState(0);
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -33,7 +34,16 @@ const AllCustomers = () => {
           // console.log(doc.id, " => ", doc.data());
           arr.push({ id: doc.id, data: doc.data() });
         });
+
+        // Calculate the total sale amount
+        const total = arr.reduce((sum, customer) => {
+          const amount = parseFloat(customer.data.saleAmount) || 0;
+          return sum + amount;
+        }, 0);
+
         setCustomers(arr);
+        setTotalSaleAmount(total);
+
         setLoading(false);
       } catch (error) {
         console.log("error", error.message);
@@ -63,6 +73,12 @@ const AllCustomers = () => {
           InputLabelProps={{ shrink: true }}
           variant="outlined"
         />
+      </Box>
+
+      <Box sx={{ marginBottom: 2 }}>
+        <Typography variant="h6">
+          Total Sales Amount: {totalSaleAmount}
+        </Typography>
       </Box>
 
       {loading && (
