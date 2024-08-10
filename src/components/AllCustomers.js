@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SingleCustomer from "./SingleCustomer";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../firebase";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, TextField } from "@mui/material";
+import { format, startOfDay, endOfDay } from "date-fns";
 
 const AllCustomers = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -16,7 +18,15 @@ const AllCustomers = () => {
 
         const promsRef = collection(db, "customers");
 
-        const q = query(promsRef, orderBy("createdAt", "desc"));
+        const startDate = startOfDay(selectedDate);
+        const endDate = endOfDay(selectedDate);
+
+        const q = query(
+          promsRef,
+          where("createdAt", ">=", startDate),
+          where("createdAt", "<=", endDate),
+          orderBy("createdAt", "desc")
+        );
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -31,7 +41,11 @@ const AllCustomers = () => {
     };
 
     getCustomers();
-  }, []);
+  }, [selectedDate]);
+
+  const handleDateChange = (event) => {
+    setSelectedDate(new Date(event.target.value));
+  };
 
   //   const getCustomers = async () => {
 
@@ -39,6 +53,18 @@ const AllCustomers = () => {
 
   return (
     <div>
+      <Box sx={{ marginBottom: 2 }}>
+        <TextField
+          fullWidth
+          label="Select Date"
+          type="date"
+          value={format(selectedDate, "yyyy-MM-dd")}
+          onChange={handleDateChange}
+          InputLabelProps={{ shrink: true }}
+          variant="outlined"
+        />
+      </Box>
+
       {loading && (
         <Box
           sx={{
