@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SingleCustomer from "./SingleCustomer";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
@@ -25,8 +25,6 @@ const AllCustomers = () => {
         });
         setCustomers(arr);
         setLoading(false);
-
-        console.log("customers", customers);
       } catch (error) {
         console.log("error", error.message);
       }
