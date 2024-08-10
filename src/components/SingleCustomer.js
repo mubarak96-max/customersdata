@@ -17,7 +17,9 @@ const SingleCustomer = ({
         <Typography sx={{ color: "black" }}>Phone: {phone}</Typography>
 
         {saleType === "Free Books" ? (
-          <Typography sx={{ color: "black" }}>Taken free books</Typography>
+          <Typography sx={{ color: "darkblue", fontWeight: 700 }}>
+            Taken free books
+          </Typography>
         ) : (
           <Typography sx={{ color: "black" }}>Bought books</Typography>
         )}
