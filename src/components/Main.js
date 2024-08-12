@@ -82,7 +82,7 @@ const Main = () => {
             setEmail("");
             setSource("");
             setSaleAmount("");
-          }, 3000);
+          }, 2000);
         }
       } catch (error) {
         console.log("Error", `Failed to upload due to ${error}`);
